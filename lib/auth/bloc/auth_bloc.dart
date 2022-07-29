@@ -1,11 +1,12 @@
 import 'dart:async';
-import 'package:bigspoon_authentication/auth/google_sign_in/google.dart';
-import 'package:bigspoon_authentication/base/abstract_bloc.dart';
-import 'package:bigspoon_authentication/base/action/navigation_action.dart';
-import 'package:bigspoon_authentication/navigation/routes.dart';
+import '../../base/abstract_bloc.dart';
+import '../../base/action/navigation_action.dart';
+import '../../navigation/routes.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../social_sign_in/social_sign_in.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -27,20 +28,21 @@ class AuthBloc extends AbstractBloc<AuthEvent, AuthState> {
       emit(AuthenticatedState(event.user));
     });
 
-    on<InitiateGoogleSignIn>(
-      onInitiateGoogleSignIn,
+    on<InitiateSocialSignIn>(
+      onInitiateSocialSignIn,
     );
   }
 
   final bigSpoonSocialSignIn = BigSpoonSocialSignIn();
 
-  Future<void> onInitiateGoogleSignIn(event, emit) async {
+  Future<void> onInitiateSocialSignIn(InitiateSocialSignIn event, emit) async {
     try {
       emit(AuthLoadingState());
 
-      final googleUser = await bigSpoonSocialSignIn.signInWithGoogle();
-      if (googleUser != null) {
-        emit(AuthenticatedState(googleUser));
+      final socialUser = await bigSpoonSocialSignIn
+          .signInWithSocialAccount(event.socialSignInType);
+      if (socialUser != null) {
+        emit(AuthenticatedState(socialUser));
         onNavigationAction(DisplayScreen(screenName: Routes.profilePage));
       } else {
         emit(AuthInitial());

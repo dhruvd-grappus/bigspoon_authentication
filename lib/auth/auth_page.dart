@@ -1,5 +1,5 @@
-import 'package:bigspoon_authentication/base/abstract_bloc_listener.dart';
-import 'package:bigspoon_authentication/base/action/navigation_action.dart';
+import '../base/abstract_bloc_listener.dart';
+import '../base/action/navigation_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -43,7 +43,9 @@ class _AuthPageState extends State<AuthPage> {
                   ? const CircularProgressIndicator()
                   : InkWell(
                       onTap: () {
-                        context.read<AuthBloc>().add(InitiateGoogleSignIn());
+                        context.read<AuthBloc>().add(InitiateSocialSignIn(
+                              socialSignInType: SocialSignInType.google,
+                            ));
                       },
                       child: Text(
                         'Sign In With Google',

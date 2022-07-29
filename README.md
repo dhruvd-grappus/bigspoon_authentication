@@ -18,10 +18,21 @@ Test app for SMS Auto Read Authentication and Google Sign In
 - Use ```AbstractBloc``` and ```AbstractBlocListener``` to handle authentication state changes.
 
 - Use 
-```dart 
-BigSpoonSocialLogin().signInWithGoogle()
-```
- to open a dialog to choose a Google Account.
+```BigSpoonSocialLogin().signInWithGoogle()```
+ to only open a dialog to choose a Google Account,
+ 
+
+- Use 
+```dart
+context.read<AuthBloc>.add(
+    InitiateSocialSignIn(
+        socialSignInType:SocialSignInType.google,
+        )
+    );
+``` 
+to execute the Google Sign In flow for a widget.
+
+
 
 - Press back to sign out.
 

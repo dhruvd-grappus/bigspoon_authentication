@@ -1,9 +1,24 @@
+import '../bloc/auth_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class BigSpoonSocialSignIn {
   final googleSignIn = GoogleSignIn();
+  Future<User?> signInWithSocialAccount(
+      SocialSignInType socialSignInType) async {
+    switch (socialSignInType) {
+      case SocialSignInType.google:
+        return await signInWithGoogle();
+      case SocialSignInType.facebook:
+        // TODO: Handle this case.
+        break;
+      case SocialSignInType.twitter:
+        // TODO: Handle this case.
+        break;
+    }
+    return null;
+  }
 
   /// Returns a Firebase [User] upon success
   Future<User?> signInWithGoogle() async {
