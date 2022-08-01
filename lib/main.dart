@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Google Sign In Demo',
       home: BlocProvider(
         lazy: false,
-        create: (context) => AuthBloc(),
+        create: (context) => AuthBloc(firebaseAuth: FirebaseAuth.instance),
         child: MaterialApp(routes: {
           Routes.googleSignInPage: (context) =>
               const AuthPage(title: 'Auth Page'),

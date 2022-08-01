@@ -5,6 +5,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class BigSpoonSocialSignIn {
   final googleSignIn = GoogleSignIn();
+  final FirebaseAuth firebaseAuth;
+
+  BigSpoonSocialSignIn(this.firebaseAuth);
+
   Future<User?> signInWithSocialAccount(
       SocialSignInType socialSignInType) async {
     switch (socialSignInType) {

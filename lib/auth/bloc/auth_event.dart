@@ -27,3 +27,19 @@ class AutoSignIn extends AuthEvent {
 }
 
 class Logout extends AuthEvent {}
+
+class EnterCode extends AuthEvent {
+  final String code;
+  final String verificationId;
+  EnterCode({
+    required this.code,
+    required this.verificationId,
+  });
+}
+
+class EnterPhoneEvent extends AuthEvent {
+  final String phone;
+  const EnterPhoneEvent({
+    this.phone = '',
+  });
+}
