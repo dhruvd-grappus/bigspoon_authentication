@@ -37,6 +37,10 @@ class EnterCode extends AuthEvent {
   });
 }
 
+class EnterCredentialEvent extends AuthEvent {
+  AuthCredential userCredential;
+  EnterCredentialEvent(this.userCredential);
+}
 class EnterPhoneEvent extends AuthEvent {
   final String phone;
   const EnterPhoneEvent({

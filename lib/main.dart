@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'profile.dart';
+import 'auth/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'auth/auth_page.dart';
 import 'auth/bloc/auth_bloc.dart';
-import 'navigation/routes.dart';
+import 'auth/navigation/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'auth/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
         create: (context) => AuthBloc(firebaseAuth: FirebaseAuth.instance),
         child: MaterialApp(routes: {
           Routes.googleSignInPage: (context) =>
-              const AuthPage(title: 'Auth Page'),
+               AuthPage(),
           Routes.profilePage: (context) => const ProfilePage(),
-        }, home: const AuthPage(title: 'Auth Page')),
+        }, home:  AuthPage()),
       ),
     );
   }

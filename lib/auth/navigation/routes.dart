@@ -1,7 +1,7 @@
 import '../profile.dart';
 import 'package:flutter/material.dart';
 
-import '../auth/auth_page.dart';
+import '../auth_page.dart';
 
 class Routes {
   static const String googleSignInPage = 'googleSignInPage';
@@ -12,7 +12,7 @@ class Routes {
     );
     switch (settings.name) {
       case googleSignInPage:
-        widget = const AuthPage(title: 'Google Sign In');
+        widget =  AuthPage();
 
         break;
       case profilePage:

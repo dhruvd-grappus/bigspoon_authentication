@@ -10,6 +10,7 @@ import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:firebase_core_web/firebase_core_web.dart';
 import 'package:fluttertoast/fluttertoast_web.dart';
 import 'package:google_sign_in_web/google_sign_in_web.dart';
+import 'package:smart_auth/smart_auth_web.dart';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
@@ -19,5 +20,6 @@ void registerPlugins(Registrar registrar) {
   FirebaseCoreWeb.registerWith(registrar);
   FluttertoastWebPlugin.registerWith(registrar);
   GoogleSignInPlugin.registerWith(registrar);
+  SmartAuthWeb.registerWith(registrar);
   registrar.registerMessageHandler();
 }

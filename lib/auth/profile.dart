@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'auth/bloc/auth_bloc.dart';
+import 'bloc/auth_bloc.dart';
 import 'navigation/routes.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -16,6 +16,9 @@ class ProfilePage extends StatelessWidget {
         return false;
       },
       child: Scaffold(
+         appBar: AppBar(
+          title: Text('Profile Page'),
+        ),
         body: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
             return Center(

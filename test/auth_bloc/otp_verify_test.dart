@@ -32,23 +32,5 @@ void main() {
 
 
 
-   blocTest<AuthBloc, AuthState>(
-    'Test to emit Invalid phone for <10 digit phone number',
-    build: () {
-      return authBloc;
-    },
    
-    act: (bloc) async {
-      bloc.add(const EnterPhoneEvent(phone: '+9111111'));
-     
-    },
-    expect: () => [
-      AuthLoadingState(),
-      isA<InvalidPhoneState>(),
-      
-    ],
-  );
-}
-
-class InvalidPhoneState extends AuthState8888888888888888888888888 {
 }
