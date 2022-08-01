@@ -16,8 +16,8 @@ class ProfilePage extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-         appBar: AppBar(
-          title: Text('Profile Page'),
+        appBar: AppBar(
+          title: const Text('Profile Page'),
         ),
         body: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {

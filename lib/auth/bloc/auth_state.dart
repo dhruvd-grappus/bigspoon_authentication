@@ -20,15 +20,14 @@ class AuthLoadingState extends AuthState {}
 
 class CodeSentState extends AuthState {
   final String verificationID;
-  CodeSentState(this.verificationID);
+  const CodeSentState(this.verificationID);
 }
 
-class VerifyingOTPState extends AuthState{
+class VerifyingOTPState extends AuthState {
   final String phone;
   final String otp;
-  VerifyingOTPState({
+  const VerifyingOTPState({
     this.phone = '',
     this.otp = '',
   });
-  
 }

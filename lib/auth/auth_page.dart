@@ -28,7 +28,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Authentication Page'),
+        title: const Text('Authentication Page'),
       ),
       body: Center(
         child: AbstractBlocListener<AuthBloc, AuthEvent, AuthState>(
@@ -44,6 +44,7 @@ class _AuthPageState extends State<AuthPage> {
               Navigator.pushReplacementNamed(context, Routes.profilePage);
             }
             if (state is VerifyingOTPState) {
+              debugPrint(state.toString());
               otpController.text = state.otp;
             }
           },
@@ -57,9 +58,9 @@ class _AuthPageState extends State<AuthPage> {
                         TextField(
                           controller: phoneController,
                           decoration:
-                              InputDecoration(hintText: '+919000000000'),
+                              const InputDecoration(hintText: '+919000000000'),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         InkWell(
@@ -69,35 +70,34 @@ class _AuthPageState extends State<AuthPage> {
                             context.read<AuthBloc>().add(
                                 EnterPhoneEvent(phone: phoneController.text));
                           },
-                          child: Text('Send OTP'),
+                          child: const Text('Send OTP'),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        state is CodeSentState
-                            ? Column(
-                                children: [
-                                  Pinput(
-                                    length: 6,
-                                    controller: otpController,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      context.read<AuthBloc>().add(EnterCode(
-                                            verificationId:
-                                                state.verificationID,
-                                            code: otpController.text,
-                                          ));
-                                    },
-                                    child: Text('Verify OTP'),
-                                  ),
-                                ],
-                              )
-                            : SizedBox(),
-                        SizedBox(
+                        Column(
+                          children: [
+                            Pinput(
+                              length: 6,
+                              controller: otpController,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                if (state is CodeSentState) {
+                                  context.read<AuthBloc>().add(EnterCode(
+                                        verificationId: state.verificationID,
+                                        code: otpController.text,
+                                      ));
+                                }
+                              },
+                              child: const Text('Verify OTP'),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
                           height: 50,
                         ),
                         InkWell(

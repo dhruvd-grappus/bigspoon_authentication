@@ -31,7 +31,7 @@ class Logout extends AuthEvent {}
 class EnterCode extends AuthEvent {
   final String code;
   final String verificationId;
-  EnterCode({
+  const EnterCode({
     required this.code,
     required this.verificationId,
   });
@@ -41,6 +41,7 @@ class EnterCredentialEvent extends AuthEvent {
   AuthCredential userCredential;
   EnterCredentialEvent(this.userCredential);
 }
+
 class EnterPhoneEvent extends AuthEvent {
   final String phone;
   const EnterPhoneEvent({

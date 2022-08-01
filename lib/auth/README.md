@@ -7,7 +7,7 @@ Uses a test Firebase project:https://console.firebase.google.com/u/0/project/big
 
 ## Usage
 
-- Navigate to ```auth_page.dart``` to test SMS Auto Read and Google Sign in Features
+- Use ```AuthPage``` widget in  ```auth_page.dart``` to test SMS Auto Read and Google Sign in Features
 
 - Use ```AbstractBloc``` and ```AbstractBlocListener``` to handle authentication state changes.
 
@@ -15,7 +15,7 @@ Uses a test Firebase project:https://console.firebase.google.com/u/0/project/big
 ## Steps to use OTP Auto Read
 
 
-### Prerequisites For Firebase
+### Prerequisites For Firebase (works only For Android)
 - Add the sha-1 and sha-256 key from google play app-signing in play console
 - Enable device check API in cloud console
 - Enable mobile authentication in Firebase console

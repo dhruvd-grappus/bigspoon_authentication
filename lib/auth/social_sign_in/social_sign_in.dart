@@ -29,7 +29,11 @@ class BigSpoonSocialSignIn {
     // Trigger the authentication flow
 
     try {
-      await googleSignIn.disconnect();
+      try {
+        await googleSignIn.disconnect();
+      } catch (e) {
+      
+      }
 
       final googleUser = await googleSignIn.signIn();
 

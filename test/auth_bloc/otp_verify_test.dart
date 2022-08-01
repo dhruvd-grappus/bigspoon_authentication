@@ -1,10 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc_test/bloc_test.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 
 import 'package:bigspoon_authentication/auth/bloc/auth_bloc.dart';
 
@@ -20,7 +17,7 @@ void main() {
     act: (bloc) async {
       bloc.add(const EnterPhoneEvent(phone: '+91111111111'));
       await Future.delayed(const Duration(milliseconds: 500));
-      bloc.add(EnterCode(code: '000000', verificationId: 'verification-id'));
+      bloc.add(const EnterCode(code: '000000', verificationId: 'verification-id'));
     },
     expect: () => [
       AuthLoadingState(),

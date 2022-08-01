@@ -12,7 +12,7 @@ class Routes {
     );
     switch (settings.name) {
       case googleSignInPage:
-        widget =  AuthPage();
+        widget = const AuthPage();
 
         break;
       case profilePage:

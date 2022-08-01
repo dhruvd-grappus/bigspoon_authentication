@@ -29,10 +29,9 @@ class MyApp extends StatelessWidget {
         lazy: false,
         create: (context) => AuthBloc(firebaseAuth: FirebaseAuth.instance),
         child: MaterialApp(routes: {
-          Routes.googleSignInPage: (context) =>
-               AuthPage(),
+          Routes.googleSignInPage: (context) => const AuthPage(),
           Routes.profilePage: (context) => const ProfilePage(),
-        }, home:  AuthPage()),
+        }, home: const AuthPage()),
       ),
     );
   }

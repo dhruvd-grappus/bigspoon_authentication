@@ -36,7 +36,7 @@ class AuthBloc extends AbstractBloc<AuthEvent, AuthState> {
       (event, emit) async {
         emit(VerifyingOTPState(
             otp: (event.userCredential as PhoneAuthCredential).smsCode ?? ''));
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(const Duration(seconds: 1));
         await firebaseAuth.signInWithCredential(event.userCredential);
       },
     );
